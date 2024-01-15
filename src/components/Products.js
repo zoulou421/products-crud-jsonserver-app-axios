@@ -1,4 +1,4 @@
-import { faCheckCircle, faCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react'
 
@@ -9,6 +9,19 @@ export default function Products() {
         { id: 3, name: "Television", price: 45000, checked: true },
         { id: 4, name: "Radio", price: 4500, checked: false }
     ])
+    const handleDeleteProduct = (product) => {
+        const newProducts = products.filter(p => p.id != product.id);
+        setProducts(newProducts);
+    }
+    const handleCheckProduct = (product) => {
+        const newProducts = products.map(p => {
+            if (p.id == product.id) {
+                p.checked = !p.checked;
+            }
+            return p;
+        })
+        setProducts(newProducts);
+    }
     return (
         <div className="p-1 m-1">
             <div className="row">
@@ -24,18 +37,25 @@ export default function Products() {
                                 <tbody>
                                     {
                                         products.map(product => (
-                                            <tr>
+                                            <tr key={product.id}>
                                                 <td>{product.id}</td>
                                                 <td>{product.name}</td>
                                                 <td>{product.price}</td>
                                                 <td>
-                                                    <button className="btn btn-outline-success">
+                                                    <button onClick={() => handleCheckProduct(product)}
+                                                        className="btn btn-outline-success">
                                                         <FontAwesomeIcon icon={product.checked ? faCheckCircle : faCircle}>
 
                                                         </FontAwesomeIcon>
                                                     </button>
                                                 </td>
-                                                <td>Actions</td>
+                                                <td>
+                                                    <button onClick={() => handleDeleteProduct(product)}
+                                                        className="btn btn-outline-danger">
+                                                        <FontAwesomeIcon icon={faTrash}>
+                                                        </FontAwesomeIcon>
+                                                    </button>
+                                                </td>
                                             </tr>
                                         ))
                                     }
