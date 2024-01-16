@@ -4,7 +4,7 @@
       "id": "2",
       "name": "computer2",
       "price": 200700,
-      "checked": true
+      "checked": false
     },
     {
       "id": "3",
@@ -16,7 +16,7 @@
       "id": "4",
       "name": "computer4",
       "price": 200870,
-      "checked": true
+      "checked": false
     },
     {
       "id": "5",
@@ -28,7 +28,7 @@
       "id": "6",
       "name": "computer5",
       "price": 200069,
-      "checked": true
+      "checked": false
     },
     {
       "id": "7",
