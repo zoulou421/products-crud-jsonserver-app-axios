@@ -1,21 +1,38 @@
 import { faCheckCircle, faCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 
 export default function Products() {
     const [products, setProducts] = useState([
-        { id: 1, name: "computer", price: 4500, checked: true },
-        { id: 2, name: "Printer", price: 4500, checked: false },
-        { id: 3, name: "Television", price: 45000, checked: true },
-        { id: 4, name: "Radio", price: 4500, checked: false }
+        /* { id: 1, name: "computer", price: 4500, checked: true },
+         { id: 2, name: "Printer", price: 4500, checked: false },
+         { id: 3, name: "Television", price: 45000, checked: true },
+         { id: 4, name: "Radio", price: 4500, checked: false }*/
     ])
+    useEffect(() => {
+        handleGetProduct()
+    }, []);
+
+    const handleGetProduct = () => {
+        axios.get("http://localhost:7000/products")
+            .then(resp => {
+                const products = resp.data;
+                setProducts(products);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+    }
+
     const handleDeleteProduct = (product) => {
-        const newProducts = products.filter(p => p.id != product.id);
+        const newProducts = products.filter(p => p.id !== product.id);
         setProducts(newProducts);
     }
     const handleCheckProduct = (product) => {
         const newProducts = products.map(p => {
-            if (p.id == product.id) {
+            if (p.id === product.id) {
                 p.checked = !p.checked;
             }
             return p;
