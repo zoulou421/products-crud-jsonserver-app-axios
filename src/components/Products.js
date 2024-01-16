@@ -1,7 +1,8 @@
 import { faCheckCircle, faCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import axios from 'axios';
+//import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { checkProduct, deleteProduct, getProducts } from '../app/app';
 
 export default function Products() {
     const [products, setProducts] = useState([
@@ -15,29 +16,50 @@ export default function Products() {
     }, []);
 
     const handleGetProduct = () => {
-        axios.get("http://localhost:7000/products")
+        /*axios.get("http://localhost:7000/products")
             .then(resp => {
                 const products = resp.data;
                 setProducts(products);
             })
             .catch(err => {
                 console.log(err);
-            })
+            })*/
+        getProducts().then(resp => {
+            setProducts(resp.data)
+        }).catch(err => {
+            console.log(err);
+        })
 
     }
 
     const handleDeleteProduct = (product) => {
-        const newProducts = products.filter(p => p.id !== product.id);
-        setProducts(newProducts);
+        deleteProduct(product).then(resp => {
+            // handleGetProduct();//it works: reload after delete//inconvient: it loads all the product
+            const newProducts = products.filter(p => p.id !== product.id);
+            setProducts(newProducts);
+        })
+        // const newProducts = products.filter(p => p.id !== product.id);
+        //  setProducts(newProducts);
     }
     const handleCheckProduct = (product) => {
-        const newProducts = products.map(p => {
+        checkProduct(product).then(resp => {
+
+            const newProducts = products.map(p => {
+                if (p.id === product.id) {
+                    p.checked = !p.checked;
+                }
+                return p;
+            })
+            setProducts(newProducts)
+
+        })
+        /*const newProducts = products.map(p => {
             if (p.id === product.id) {
                 p.checked = !p.checked;
             }
             return p;
         })
-        setProducts(newProducts);
+        setProducts(newProducts);*/
     }
     return (
         <div className="p-1 m-1">
