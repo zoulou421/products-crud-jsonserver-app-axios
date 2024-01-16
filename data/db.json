@@ -1,40 +1,46 @@
 {
   "products": [
     {
-      "id": "2",
+      "id": 2,
       "name": "computer2",
       "price": 200700,
       "checked": false
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "computer3",
       "price": 208900,
       "checked": true
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "computer4",
       "price": 200870,
       "checked": false
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "computer5",
       "price": 200069,
       "checked": true
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "computer5",
       "price": 200069,
       "checked": false
     },
     {
-      "id": "7",
-      "name": "computer5",
-      "price": 200069,
-      "checked": false
+      "id": 8,
+      "name": "Mackbook",
+      "price": "1200000",
+      "checked": "on"
+    },
+    {
+      "id": 9,
+      "name": "Mackbook",
+      "price": "1200000",
+      "checked": "on"
     }
   ]
 }
