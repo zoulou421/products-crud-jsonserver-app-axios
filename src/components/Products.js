@@ -1,4 +1,4 @@
-import { faCheckCircle, faCircle, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCircle, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import axios from 'axios';
 import React, { useEffect, useState } from 'react'
@@ -19,6 +19,9 @@ export default function Products() {
         keyword: "",
         totalPages: 0
     })
+
+    const [query, setQuery] = useState("");//search form
+
     useEffect(() => {
         // handleGetProduct()
         handleGetProduct(state.keyword, state.currentPage, state.pageSize)
@@ -83,11 +86,36 @@ export default function Products() {
     const handleGoToPage = (page) => {
         handleGetProduct(state.keyword, page, state.pageSize);
     }
+
+    const handleSearch = (event) => {
+        event.preventDefault();
+        // setState({ ...state, keyword: query });
+        handleGetProduct(query, 1, state.pageSize);
+    }
     return (
         <div className="p-1 m-1">
             <div className="row">
                 <div className="col-md-6">
-                    <div className="card">
+                    <div className="card m-1">
+                        <div className="card-body">
+                            <form onSubmit={handleSearch}>
+                                <div className="row g-2">
+                                    <div className="col-auto">
+                                        <input
+                                            value={query}
+                                            onChange={(e) => setQuery(e.target.value)}
+                                            type="text" className="form-control" />
+                                    </div>
+                                    <div className="col-auto">
+                                        <button className="btn btn-success">
+                                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div className="card m-1">
                         <div className="card-body">
                             <table className="table">
                                 <thead>

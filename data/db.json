@@ -1,12 +1,6 @@
 {
   "products": [
     {
-      "id": "2",
-      "name": "computer2",
-      "price": 200700,
-      "checked": true
-    },
-    {
       "id": "3",
       "name": "computer3",
       "price": 208900,
