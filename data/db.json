@@ -1,45 +1,135 @@
 {
   "products": [
     {
-      "id": 2,
+      "id": "2",
       "name": "computer2",
       "price": 200700,
-      "checked": false
+      "checked": true
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "computer3",
       "price": 208900,
       "checked": true
     },
     {
-      "id": 4,
-      "name": "computer4",
-      "price": 200870,
-      "checked": false
-    },
-    {
-      "id": 5,
-      "name": "computer5",
-      "price": 200069,
+      "id": "6",
+      "name": "Mackbook",
+      "price": "1200000",
       "checked": true
     },
     {
-      "id": 6,
-      "name": "computer5",
-      "price": 200069,
-      "checked": false
-    },
-    {
-      "id": 8,
-      "name": "Mackbook",
-      "price": "1200000",
+      "id": "7",
+      "name": "testProd",
+      "price": "23456",
       "checked": "on"
     },
     {
-      "id": 9,
-      "name": "Mackbook",
-      "price": "1200000",
+      "id": "8",
+      "name": "Tablette",
+      "price": 56780,
+      "checked": true
+    },
+    {
+      "id": "9",
+      "name": "testProd",
+      "price": "23456",
+      "checked": "on"
+    },
+    {
+      "id": "10",
+      "name": "Tablette",
+      "price": 56780,
+      "checked": "on"
+    },
+    {
+      "id": "11",
+      "name": "testProd",
+      "price": "23456",
+      "checked": "on"
+    },
+    {
+      "id": "12",
+      "name": "Tablette",
+      "price": 56780,
+      "checked": "on"
+    },
+    {
+      "id": "50aa",
+      "name": "ITEM",
+      "price": "4556",
+      "checked": "on"
+    },
+    {
+      "id": "c1dc",
+      "name": "ITEM2",
+      "price": "4558",
+      "checked": "on"
+    },
+    {
+      "id": "93b3",
+      "name": "ITEM",
+      "price": "45567",
+      "checked": "on"
+    },
+    {
+      "id": "451e",
+      "name": "nnn",
+      "price": 0,
+      "checked": false
+    },
+    {
+      "id": "ca4a",
+      "name": "nnn",
+      "price": 0,
+      "checked": false
+    },
+    {
+      "id": "ab61",
+      "name": "nnn",
+      "price": 0,
+      "checked": false
+    },
+    {
+      "id": "4a25",
+      "name": "ooo",
+      "price": 0,
+      "checked": false
+    },
+    {
+      "id": "1873",
+      "name": "ppp",
+      "price": 0,
+      "checked": "on"
+    },
+    {
+      "id": "0297",
+      "name": "ppp",
+      "price": 0,
+      "checked": "on"
+    },
+    {
+      "id": "9d20",
+      "name": "ppp",
+      "price": 0,
+      "checked": "on"
+    },
+    {
+      "id": "b330",
+      "name": "produit 1",
+      "price": 0,
+      "checked": "on"
+    },
+    {
+      "id": "e1a7",
+      "name": "produit 2",
+      "price": 0,
+      "checked": "on"
+    },
+    {
+      "id": "8116",
+      "name": "produit 3",
+      "price": "8996",
       "checked": "on"
     }
   ]

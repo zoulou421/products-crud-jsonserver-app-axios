@@ -4,14 +4,14 @@ import axios from "axios";
 
 
 export const productsApi = axios.create({
-    baseURL: "http://localhost:7800"
+    baseURL: "http://localhost:7700"
 });
 
 export const getProducts = () => {
     return productsApi.get("/products");
 }
 
-export const getProductsByFilter = (keyword = "", page = 1, size = 4) => {
+export const getProductsByFilter = (keyword = "", page = 1, size = 6) => {
     return productsApi.get(`/products/?name_like=${keyword}&_page=${page}&_limit=${size}`);
 }
 

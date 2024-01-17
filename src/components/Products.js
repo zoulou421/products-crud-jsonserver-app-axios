@@ -6,17 +6,26 @@ import React, { useEffect, useState } from 'react'
 import { checkProduct, deleteProduct, getProductsByFilter } from '../app/app';
 
 export default function Products() {
-    const [products, setProducts] = useState([
-        /* { id: 1, name: "computer", price: 4500, checked: true },
-         { id: 2, name: "Printer", price: 4500, checked: false },
-         { id: 3, name: "Television", price: 45000, checked: true },
-         { id: 4, name: "Radio", price: 4500, checked: false }*/
-    ])
+    //const [products, setProducts] = useState([
+    /* { id: 1, name: "computer", price: 4500, checked: true },
+     { id: 2, name: "Printer", price: 4500, checked: false },
+     { id: 3, name: "Television", price: 45000, checked: true },
+     { id: 4, name: "Radio", price: 4500, checked: false }*/
+    // ]) in comment to fix pagination
+    const [state, setState] = useState({
+        products: [],
+        currentPage: 1,
+        pageSize: 3,
+        keyword: "",
+        totalPages: 0
+    })
     useEffect(() => {
-        handleGetProduct()
+        // handleGetProduct()
+        handleGetProduct(state.keyword, state.currentPage, state.pageSize)
     }, []);
 
-    const handleGetProduct = () => {
+    //const handleGetProduct = () => {
+    const handleGetProduct = (keyword, page, size) => {
         /*axios.get("http://localhost:7000/products")
             .then(resp => {
                 const products = resp.data;
@@ -26,8 +35,13 @@ export default function Products() {
                 console.log(err);
             })*/
         // getProducts().then(resp => {
-        getProductsByFilter().then(resp => {
-            setProducts(resp.data)
+        getProductsByFilter(keyword, page, size).then(resp => {
+            // setProducts(resp.data)
+            let totalElements = resp.headers['x-total-count'];
+            var totalPages = Math.floor(totalElements / size);
+            if (totalElements % size !== 0) ++totalElements;
+
+            setState({ ...state, products: resp.data, keyword: keyword, currentPage: page, pageSize: size, totalPages: totalPages });
         }).catch(err => {
             console.log(err);
         })
@@ -37,8 +51,10 @@ export default function Products() {
     const handleDeleteProduct = (product) => {
         deleteProduct(product).then(resp => {
             // handleGetProduct();//it works: reload after delete//inconvient: it loads all the product
-            const newProducts = products.filter(p => p.id !== product.id);
-            setProducts(newProducts);
+            //const newProducts = products.filter(p => p.id !== product.id);
+            const newProducts = state.products.filter(p => p.id !== product.id);
+            // setProducts(newProducts);
+            setState({ ...state, products: newProducts });
         })
         // const newProducts = products.filter(p => p.id !== product.id);
         //  setProducts(newProducts);
@@ -46,14 +62,15 @@ export default function Products() {
     const handleCheckProduct = (product) => {
         checkProduct(product).then(resp => {
 
-            const newProducts = products.map(p => {
+            //  const newProducts = products.map(p => {
+            const newProducts = state.products.map(p => {
                 if (p.id === product.id) {
                     p.checked = !p.checked;
                 }
                 return p;
             })
-            setProducts(newProducts)
-
+            // setProducts(newProducts)
+            setState({ ...state, products: newProducts });
         })
         /*const newProducts = products.map(p => {
             if (p.id === product.id) {
@@ -62,6 +79,9 @@ export default function Products() {
             return p;
         })
         setProducts(newProducts);*/
+    }
+    const handleGoToPage = (page) => {
+        handleGetProduct(state.keyword, page, state.pageSize);
     }
     return (
         <div className="p-1 m-1">
@@ -77,7 +97,8 @@ export default function Products() {
                                 </thead>
                                 <tbody>
                                     {
-                                        products.map(product => (
+                                        state.products.map(product => (
+                                            //  state.map(product => (
                                             <tr key={product.id}>
                                                 <td>{product.id}</td>
                                                 <td>{product.name}</td>
@@ -102,6 +123,18 @@ export default function Products() {
                                     }
                                 </tbody>
                             </table>
+                            <ul className="nav nav-pills">
+                                {
+                                    (new Array(state.totalPages.totalElements).fill(0)).map((v, index) => (
+                                        <li>
+                                            <button onClick={() => handleGoToPage(index + 1)}
+                                                className={(index + 1) === state.currentPage ? "btn btn-info ms-1" : "btn btn-outline-info ms-1"}>{index + 1}</button>
+                                        </li>
+                                    ))
+
+                                }
+
+                            </ul>
                         </div>
                     </div>
                 </div>
