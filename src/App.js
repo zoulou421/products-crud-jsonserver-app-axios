@@ -6,6 +6,7 @@ import Products from './components/Products';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from 'react';
 import NewProduct from './components/NewProduct';
+import EditProduct from './components/EditProduct';
 
 function App() {
   const [currentRoute, setCurrentRoute] = useState();
@@ -39,12 +40,14 @@ function App() {
                 "btn btn-outline-info ms-1"} to={"/newProduct"}>New Product
             </Link>
           </li>
+
         </ul>
       </nav>
       <Routes>
         <Route path="/home" element={<Home />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/newProduct" element={<NewProduct />}></Route>
+        <Route path="/editProduct/:id" element={<EditProduct />}></Route>
       </Routes>
     </BrowserRouter>
 

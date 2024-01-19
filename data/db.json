@@ -16,7 +16,7 @@
       "id": "7",
       "name": "testProd",
       "price": "23456",
-      "checked": "on"
+      "checked": true
     },
     {
       "id": "8",
@@ -124,6 +124,12 @@
       "id": "8116",
       "name": "produit 3",
       "price": "8996",
+      "checked": "on"
+    },
+    {
+      "id": "9169",
+      "name": "nnnnn",
+      "price": 0,
       "checked": "on"
     }
   ]
