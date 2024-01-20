@@ -1,7 +1,7 @@
 import axios from "axios";
+import { createContext, useState } from "react";
 
 // This is like a repository which has to interact with my backend side(json-server)
-
 
 export const productsApi = axios.create({
     baseURL: "http://localhost:7800"
@@ -36,3 +36,22 @@ export const checkProduct = (product) => {
 export const updateProduct = (product) => {
     return productsApi.put(`/products/${product.id}`, product);
 }
+
+
+
+
+export const AppContext = createContext();
+
+export const useAppState = () => {
+    const initialState = {
+        products: [],
+        currentPage: 1,
+        pageSize: 3,
+        keyword: "",
+        totalPages: 0
+    };
+
+    const appState = useState(initialState);
+    return appState;
+}
+

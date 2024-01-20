@@ -7,12 +7,6 @@
       "checked": true
     },
     {
-      "id": "6",
-      "name": "Mackbook",
-      "price": "1200000",
-      "checked": true
-    },
-    {
       "id": "7",
       "name": "testProd",
       "price": "23456",

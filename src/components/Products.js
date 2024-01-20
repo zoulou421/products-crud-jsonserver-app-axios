@@ -3,13 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 //import { checkProduct, deleteProduct, getProducts, getProductsByFilter } from '../app/app';
-import { checkProduct, deleteProduct, getProductsByFilter } from '../app/app';
+import { AppContext, checkProduct, deleteProduct, getProductsByFilter } from '../app/app';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
 
 export default function Products() {
 
     //function
     const navigate = useNavigate();
+
+    //centralised state
+    const [state, setState] = useContext(AppContext);
+
 
     //const [products, setProducts] = useState([
     /* { id: 1, name: "computer", price: 4500, checked: true },
@@ -17,13 +22,13 @@ export default function Products() {
      { id: 3, name: "Television", price: 45000, checked: true },
      { id: 4, name: "Radio", price: 4500, checked: false }*/
     // ]) in comment to fix pagination
-    const [state, setState] = useState({
-        products: [],
-        currentPage: 1,
-        pageSize: 3,
-        keyword: "",
-        totalPages: 0
-    })
+    /*  const [state, setState] = useState({
+          products: [],
+          currentPage: 1,
+          pageSize: 3,
+          keyword: "",
+          totalPages: 0
+      }) centralised in app.js*/
 
     const [query, setQuery] = useState("");//search form
 
