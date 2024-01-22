@@ -13,12 +13,6 @@
       "checked": true
     },
     {
-      "id": "8",
-      "name": "Tablette",
-      "price": 56780,
-      "checked": true
-    },
-    {
       "id": "9",
       "name": "testProd",
       "price": "23456",

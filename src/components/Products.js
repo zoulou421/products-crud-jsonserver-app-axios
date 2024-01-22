@@ -172,14 +172,12 @@ export default function Products() {
                             <ul className="nav nav-pills">
                                 {
                                     (new Array(state.totalPages.totalElements).fill(0)).map((v, index) => (
-                                        <li>
+                                        <li key={index + 1}>
                                             <button onClick={() => handleGoToPage(index + 1)}
                                                 className={(index + 1) === state.currentPage ? "btn btn-info ms-1" : "btn btn-outline-info ms-1"}>{index + 1}</button>
                                         </li>
                                     ))
-
                                 }
-
                             </ul>
                         </div>
                     </div>

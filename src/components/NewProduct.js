@@ -37,7 +37,7 @@ export default function NewProduct() {
                                 <input onChange={(e) => SetChecked(e.target.value)} type="checkbox"
                                     checked={checked}
                                     className="form-check-input" />
-                                <label className="form-check-label">Checked:</label>
+                                <label className="form-check-label" htmlFor="flexCheckChecked">Checked:</label>
                             </div>
                             <div className="mb-3">
                                 <button className="btn btn-info-xm btn-primary">save product</button>
