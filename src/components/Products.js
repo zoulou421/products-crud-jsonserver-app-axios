@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { AppContext, checkProduct, deleteProduct, getProductsByFilter } from '../app/app';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
+import SearchForm from './SearchForm';
 
 export default function Products() {
 
@@ -108,21 +109,7 @@ export default function Products() {
                 <div className="col-md-6">
                     <div className="card m-1">
                         <div className="card-body">
-                            <form onSubmit={handleSearch}>
-                                <div className="row g-2">
-                                    <div className="col-auto">
-                                        <input
-                                            value={query}
-                                            onChange={(e) => setQuery(e.target.value)}
-                                            type="text" className="form-control" />
-                                    </div>
-                                    <div className="col-auto">
-                                        <button className="btn btn-success">
-                                            <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+                            <SearchForm handleSearch={handleSearch} query={query} setQuery={setQuery} />
                         </div>
                     </div>
                     <div className="card m-1">
